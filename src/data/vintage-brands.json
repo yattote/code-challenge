@@ -1,0 +1,20 @@
+[
+{
+    "id":"1",
+    "name":"Sinclair Research",
+    "logo":"assets/logo_1.jpg",
+    "desc":"Clive Marles Sinclair (Londres, 30 de julio de 1940) es un ingeniero, inventor y empresario británico. Es el creador del popular ZX Spectrum, un microordenador doméstico de los años 1980"
+},
+{
+    "id":"2",
+    "name":"Commodore International",
+    "logo":"assets/logo_2.jpg",
+    "desc":"Fue una compañía estadounidense de electrónica y hardware con sede en West Chester"
+},
+{
+    "id":"3",
+    "name":"Amstrad",
+    "logo":"assets/logo_3.png",
+    "desc":"Amstrad es un fabricante de electrónica con base en Brentwood, Essex, Inglaterra, "
+}
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "id":"1",
+        "idbrand":"1",
+        "name":"ZX 80"
+    },
+    {
+        "id":"2",
+        "idbrand":"1",
+        "name":"ZX Spectrum"
+    },
+    {
+        "id":"3",
+        "idbrand":"2",
+        "name":"Commodore VIC-20"
+    },
+    {
+        "id":"4",
+        "idbrand":"2",
+        "name":"Commodore 64"
+    },
+    {
+        "id":"5",
+        "idbrand":"2",
+        "name":"Commodore Amiga"
+    },
+    {
+        "id":"6",
+        "idbrand":"3",
+        "name":"CPC 464"
+    },
+    {
+        "id":"7",
+        "idbrand":"3",
+        "name":"CPC6128"
+    }
+]
