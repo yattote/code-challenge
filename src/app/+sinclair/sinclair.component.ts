@@ -8,24 +8,24 @@ import {
  * see https://github.com/gdi2290/es6-promise-loader for more info
  */
 
-console.log('`Detail` component loaded asynchronously');
+console.log('`Sinclair` component loaded asynchronously');
 
+//TODO: get data from vintage-brands.json and show it here
 @Component({
-  selector: 'detail',
+  selector: 'sinclair',
   template: `
-    <h1>Hello from Detail</h1>
+    <h1>Hello from Sinclair</h1>
     <span>
-      <a [routerLink]=" ['./child-detail'] ">
-        Child Detail
+      <a>
+        List games Sinclair
       </a>
     </span>
     <router-outlet></router-outlet>
   `,
 })
-export class DetailComponent implements OnInit {
 
+export class SinclairComponent implements OnInit {
   public ngOnInit() {
-    console.log('hello `Detail` component');
+    console.log('hello `Sinclair` component');
   }
-
 }

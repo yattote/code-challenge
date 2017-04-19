@@ -25,9 +25,8 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
+import { UnderConstructionComponent } from './under-construction';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -51,10 +50,9 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    AboutComponent,
+    UnderConstructionComponent,
     HomeComponent,
-    NoContentComponent,
-    XLargeDirective
+    NoContentComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -67,8 +65,8 @@ type StoreType = {
     APP_PROVIDERS
   ]
 })
-export class AppModule {
 
+export class AppModule {
   constructor(
     public appRef: ApplicationRef,
     public appState: AppState
@@ -110,5 +108,4 @@ export class AppModule {
     store.disposeOldHosts();
     delete store.disposeOldHosts;
   }
-
 }

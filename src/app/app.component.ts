@@ -22,23 +22,27 @@ import { AppState } from './app.service';
     <nav>
       <a [routerLink]=" ['./'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Index
-      </a>
-      <a [routerLink]=" ['./home'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Home
       </a>
-      <a [routerLink]=" ['./detail'] "
+      <a [routerLink]=" ['./foo'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Detail
+        Foo
       </a>
-      <a [routerLink]=" ['./barrel'] "
+      <a [routerLink]=" ['./bar'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Barrel
+        Bar
       </a>
-      <a [routerLink]=" ['./about'] "
+      <a [routerLink]=" ['./sinclair'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        About
+        Sinclair
+      </a>
+      <a [routerLink]=" ['./commodore'] "
+        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Commodore
+      </a>
+      <a [routerLink]=" ['./amstrad'] "
+        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Amstrad
       </a>
     </nav>
 
@@ -46,22 +50,15 @@ import { AppState } from './app.service';
       <router-outlet></router-outlet>
     </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
     <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
+      <span>Powered by <a [href]="url">Angular2</a></span>
     </footer>
   `
 })
+
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
+  public name = 'Angular 2 code challenge';
+  public url = 'https://angular.io/';
 
   constructor(
     public appState: AppState
@@ -70,7 +67,6 @@ export class AppComponent implements OnInit {
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }
-
 }
 
 /*

@@ -8,24 +8,24 @@ import {
  * see https://github.com/gdi2290/es6-promise-loader for more info
  */
 
-console.log('`Barrel` component loaded asynchronously');
+console.log('`Amstrad` component loaded asynchronously');
 
+//TODO: get data from vintage-brands.json and show it here
 @Component({
-  selector: 'barrel',
+  selector: 'amstrad',
   template: `
-    <h1>Hello from Barrel</h1>
+    <h1>Hello from Amstrad</h1>
     <span>
-      <a [routerLink]=" ['./child-barrel'] ">
-        Child Barrel
+      <a [routerLink]=" ['./amstrad-detail'] ">
+        Amstrad Detail
       </a>
     </span>
     <router-outlet></router-outlet>
   `,
 })
-export class BarrelComponent implements OnInit {
 
+export class AmstradComponent implements OnInit {
   public ngOnInit() {
-    console.log('hello `Barrel` component');
+    console.log('hello `Amstrad` component');
   }
-
 }
