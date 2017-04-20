@@ -34,9 +34,9 @@ export class HomeComponent implements OnInit {
      //this.title.getData().subscribe(data => this.data = data);
   }
 
-  public submitState(value: string) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
-  }
+  // public submitState(value: string) {
+  //   console.log('submitState', value);
+  //   this.appState.set('value', value);
+  //   this.localState.value = '';
+  // }
 }

@@ -24,6 +24,8 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+import { BrandService } from './app.service';
+import { BrandItemsService } from './app.service';
 import { HomeComponent } from './home';
 import { UnderConstructionComponent } from './under-construction';
 import { NoContentComponent } from './no-content';
