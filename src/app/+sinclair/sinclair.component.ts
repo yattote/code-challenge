@@ -23,10 +23,13 @@ console.log('`Sinclair` component loaded asynchronously');
     BrandItemsService
   ],
   template: `
-    <h1>List of models for {{brand.name}}</h1>
+    <h1>List of models for </h1>
     <div>
-        <img src={{brand.logo}}>
-        <h3>{{brand.desc}}</h3>
+      
+      
+
+
+
     </div>
     <hr>
     <div>
@@ -42,16 +45,40 @@ console.log('`Sinclair` component loaded asynchronously');
 })
 
 export class SinclairComponent implements OnInit {
-  public brand : Brand;
-  public brandItems : BrandItem[];
+  errorBrands: string;
+  errorBrandItems: string;
+  brands : Brand[];
+  brandItems : BrandItem[];
 
   constructor(private brandService : BrandService,
               private brandItemsService : BrandItemsService) {
-    this.brand = brandService.getBrand('1');
-    this.brandItems = brandItemsService.getBrandItems('1');
   }
 
   public ngOnInit() {
+    this.getBrands();
+    this.getBrandItems();
     console.log('hello `Sinclair` component');
+  }
+
+  private getBrands() {
+    this.brandService.getBrands()
+        .subscribe( brands => {
+                        this.brands = brands.filter(item => item.id == '1');
+                        console.log('this.brands.length=' + this.brands.length);
+                        console.log('this.brands[0]=' + this.brands[0]);
+                        console.log('this.brands[0].desc=' + this.brands[0].desc);
+                    },
+                    error =>  this.errorBrands = <any>error);
+  }
+  
+  private getBrandItems() {
+    this.brandItemsService.getBrandItems()
+        .subscribe( brandItems => {
+                        this.brandItems = brandItems.filter(item => item.idbrand == '1');
+                        console.log('this.brandItems.length=' + this.brandItems.length);
+                        console.log('this.brandItems[0]=' + this.brandItems[0])
+                        console.log('this.brandItems[0].name=' + this.brandItems[0].name)
+                    },
+                    error =>  this.errorBrandItems = <any>error);
   }
 }

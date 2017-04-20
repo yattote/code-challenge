@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs';
 
 export type InternalStateType = {
   [key: string]: any
@@ -35,14 +38,14 @@ export class AppState {
   }
 }
 
-export class Brand{
+export class Brand {
 id:string;
 name:string;
 logo:string;
 desc:string;
 }
 
-export class BrandItem{
+export class BrandItem {
 id:string;
 idbrand:string;
 name:string;
@@ -50,58 +53,52 @@ name:string;
 
 @Injectable()
 export class BrandService {
-  constructor() {
+  constructor(private http:Http) {
   }
 
-  getBrand(id : string) {
-    let brands:Brand[] = this.getBrands();
-    
-    return brands.filter(item => item.id == id)[0];
-
-    // return this.http.get('assets/vintage-brands.json')
-    //                   .map((res:Response) => res.json().Brand)
-    //                   .filter(data => data.id == id)[0];
+  getBrands() : Observable<Brand[]> {
+    return this.http.get('assets/vintage-brands.json')
+                    .map((res:Response) => res.json())
+                    .catch(this.handleError);
   }
 
-  getBrands() {
-    //TODO: to read from .json file instead of importing its content
-    let brands:any = JSON.parse('[{"id":"1","name":"Sinclair Research","logo":"assets/logo-sinclair.jpg","desc":"Clive Marles Sinclair (Londres, 30 de julio de 1940) es un ingeniero, inventor y empresario británico. Es el creador del popular ZX Spectrum, un microordenador doméstico de los años 1980"},{"id":"2","name":"Commodore International","logo":"assets/logo-commodore.jpg","desc":"Fue una compañía estadounidense de electrónica y hardware con sede en West Chester"},{"id":"3","name":"Amstrad","logo":"assets/logo-amstrad.png","desc":"Amstrad es un fabricante de electrónica con base en Brentwood, Essex, Inglaterra, "}]');
-    let brandsObj:Brand[] = <Brand[]> brands;
-
-    console.log('Brands from json file:', brands);
-    brandsObj.forEach(item => {
-      console.log('Parsed Brands from json file:', item);
-    });
-    
-    return brandsObj;
+  private handleError (error: Response | any) {
+    // In a real world app, you might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
   }
 }
 
 @Injectable()
 export class BrandItemsService {
-  constructor() {
+  constructor(private http:Http) {
   }
 
-  getBrandItems(brandId : string) {
-      let brandItems:BrandItem[] = this.getAllBrandItems();
-    
-    return brandItems.filter(item => item.idbrand == brandId);
-
-  //   return this.http.get('assets/vintage-items.json')
-  //                     .map((res:Response) => res.json().BrandItems)
-  //                     .filter(data => data.id == id);
+  getBrandItems() : Observable<BrandItem[]> {
+    return this.http.get('assets/vintage-items.json')
+                    .map((res:Response) => res.json())
+                    .catch(this.handleError);
   }
 
-  getAllBrandItems() {
-   //TODO: to read from .json file instead of importing its content
-    let brandItems:any = JSON.parse('[{"id":"1","idbrand":"1","name":"ZX 80"},{"id":"2","idbrand":"1","name":"ZX Spectrum"},{"id":"3","idbrand":"2","name":"Commodore VIC-20"},{"id":"4","idbrand":"2","name":"Commodore 64"},{"id":"5","idbrand":"2","name":"Commodore Amiga"},{"id":"6","idbrand":"3","name":"CPC 464"},{"id":"7","idbrand":"3","name":"CPC6128"}]');
-    let brandItemsObj:BrandItem[] = <BrandItem[]> brandItems;
-
-    console.log('Brand items from json file:', brandItems);
-    brandItemsObj.forEach(item => {
-      console.log('Parsed Brand items from json file:', item);
-    });
-    
-    return brandItemsObj;
+  private handleError (error: Response | any) {
+    // In a real world app, you might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
   }
 }
