@@ -15,7 +15,6 @@ import { BrandItem } from '../app.service';
 
 console.log('`Sinclair` component loaded asynchronously');
 
-//TODO: get data from vintage-brands.json and show it here
 @Component({
   selector: 'sinclair',
    providers: [
@@ -23,13 +22,10 @@ console.log('`Sinclair` component loaded asynchronously');
     BrandItemsService
   ],
   template: `
-    <h1>List of models for </h1>
+    <h1>List of models for {{brand?.name}} </h1>
     <div>
-      
-      
-
-
-
+         <img src={{brand?.logo}}>
+         <h3>{{brand?.desc}}</h3>
     </div>
     <hr>
     <div>
@@ -47,6 +43,7 @@ console.log('`Sinclair` component loaded asynchronously');
 export class SinclairComponent implements OnInit {
   errorBrands: string;
   errorBrandItems: string;
+  brand : Brand;
   brands : Brand[];
   brandItems : BrandItem[];
 
@@ -67,6 +64,7 @@ export class SinclairComponent implements OnInit {
                         console.log('this.brands.length=' + this.brands.length);
                         console.log('this.brands[0]=' + this.brands[0]);
                         console.log('this.brands[0].desc=' + this.brands[0].desc);
+                        this.brand = this.brands[0];
                     },
                     error =>  this.errorBrands = <any>error);
   }
@@ -76,8 +74,8 @@ export class SinclairComponent implements OnInit {
         .subscribe( brandItems => {
                         this.brandItems = brandItems.filter(item => item.idbrand == '1');
                         console.log('this.brandItems.length=' + this.brandItems.length);
-                        console.log('this.brandItems[0]=' + this.brandItems[0])
-                        console.log('this.brandItems[0].name=' + this.brandItems[0].name)
+                        console.log('this.brandItems[0]=' + this.brandItems[0]);
+                        console.log('this.brandItems[0].name=' + this.brandItems[0].name);
                     },
                     error =>  this.errorBrandItems = <any>error);
   }
