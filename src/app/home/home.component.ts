@@ -4,7 +4,6 @@ import {
 } from '@angular/core';
 
 import { AppState } from '../app.service';
-import { Title } from './title';
 
 @Component({
   // The selector is what angular internally uses
@@ -13,7 +12,6 @@ import { Title } from './title';
   selector: 'home',  // <home></home>
   // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [
-    Title
   ],
   // Our list of styles in our component. We may add more to compose many styles together
   ///styleUrls: [ './home.component.css' ],
@@ -25,13 +23,11 @@ export class HomeComponent implements OnInit {
   public localState = { value: '' };
   // TypeScript public modifiers
   constructor(
-    public appState: AppState,
-    public title: Title
+   public appState: AppState
   ) {}
 
   public ngOnInit() {
     console.log('hello `Home` component');
-     //this.title.getData().subscribe(data => this.data = data);
   }
 
   // public submitState(value: string) {

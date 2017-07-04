@@ -24,15 +24,15 @@ console.log('`Amstrad` component loaded asynchronously');
   template: `
     <h1>List of models for {{brand?.name}} </h1>
     <div>
-         <img src={{brand?.logo}}>
-         <h3>{{brand?.desc}}</h3>
+      <a href={{brand?.wiki}} target="_blank"><img src={{brand?.logo}}></a>
+      <h3>{{brand?.desc}}</h3>
     </div>
     <hr>
     <div>
       <h3>List of models</h3>
       <ul>
         <li *ngFor="let item of brandItems">
-            {{item.name}}
+          {{item.name}}
         </li>
       </ul>
     </div>
