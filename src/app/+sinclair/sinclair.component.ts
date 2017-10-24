@@ -22,9 +22,9 @@ console.log('`Sinclair` component loaded asynchronously');
     BrandItemsService
   ],
   template: `
-    <h1>List of models for {{brand?.name}} </h1>
+    <h1>List of models for <a href={{brand?.wiki}} target="_blank">{{brand?.name}}</a></h1>
     <div>
-      <a href={{brand?.wiki}} target="_blank"><img src={{brand?.logo}}></a>
+      <img src={{brand?.logo}}>
       <h3>{{brand?.desc}}</h3>
     </div>
     <hr>

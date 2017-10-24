@@ -53,52 +53,56 @@ name:string;
 
 @Injectable()
 export class BrandService {
-  constructor(private http:Http) {
-  }
+  private _brandsurl='assets/vintage-brands.json';
+
+  constructor(private http:Http) { }
 
   getBrands() : Observable<Brand[]> {
-    return this.http.get('assets/vintage-brands.json')
-                    .map((res:Response) => res.json())
-                    .catch(this.handleError);
+    return this.http.get(this._brandsurl)
+                    .map((res:Response) => <Brand[]> res.json())
+                    .do(data => console.log(JSON.stringify(data)));
+                    // .catch(this.handleError);
   }
 
-  private handleError (error: Response | any) {
-    // In a real world app, you might use a remote logging infrastructure
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
-    }
-    console.error(errMsg);
-    return Observable.throw(errMsg);
-  }
+  // private handleError (error: Response | any) {
+  //   // In a real world app, you might use a remote logging infrastructure
+  //   let errMsg: string;
+  //   if (error instanceof Response) {
+  //     const body = error.json() || '';
+  //     const err = body.error || JSON.stringify(body);
+  //     errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+  //   } else {
+  //     errMsg = error.message ? error.message : error.toString();
+  //   }
+  //   console.error(errMsg);
+  //   return Observable.throw(errMsg);
+  // }
 }
 
 @Injectable()
 export class BrandItemsService {
-  constructor(private http:Http) {
-  }
+  private _brandItemsurl='assets/vintage-items.json';
+
+  constructor(private http:Http) { }
 
   getBrandItems() : Observable<BrandItem[]> {
-    return this.http.get('assets/vintage-items.json')
-                    .map((res:Response) => res.json())
-                    .catch(this.handleError);
+    return this.http.get(this._brandItemsurl)
+                    .map((res:Response) => <BrandItem[]> res.json())
+                    .do(data => console.log(JSON.stringify(data)));
+                    // .catch(this.handleError);
   }
 
-  private handleError (error: Response | any) {
-    // In a real world app, you might use a remote logging infrastructure
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
-    }
-    console.error(errMsg);
-    return Observable.throw(errMsg);
-  }
+  // private handleError (error: Response | any) {
+  //   // In a real world app, you might use a remote logging infrastructure
+  //   let errMsg: string;
+  //   if (error instanceof Response) {
+  //     const body = error.json() || '';
+  //     const err = body.error || JSON.stringify(body);
+  //     errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+  //   } else {
+  //     errMsg = error.message ? error.message : error.toString();
+  //   }
+  //   console.error(errMsg);
+  //   return Observable.throw(errMsg);
+  // }
 }
